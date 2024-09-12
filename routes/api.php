@@ -9,7 +9,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::get('livros', [LivroController::class, 'index']);
-Route::post('livro', [LivroController::class, 'create']);
+Route::post('livro', [LivroController::class, 'store']);
 Route::get('livro/{id}', [LivroController::class, 'show']);
-Route::put('livro/{id}', [LivroController::class, 'edit']);
+Route::put('livro/{id}', [LivroController::class, 'update']);
 Route::delete('livro/{id}', [LivroController::class, 'delete']);
