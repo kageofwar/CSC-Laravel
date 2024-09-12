@@ -44,11 +44,11 @@ DB_PASSWORD=<senha mysql>
 ~~~
 
 - Certifique-se tambem de criar um database com o mesmo nome do configurado em seu .env, sem isso sera impossivel rodar as migrations.
-* `mysql -u<usuario> -p<senha>`
-* `CREATE DATABASE <nome da database>`
+* `CREATE DATABASE <nome da database>` no seu banco de dados...
 
 Agora pra rodar o sistema:
 * `php artisan key:generate`
+* `npm install`
 * `npm run build`
 * `php artisan migrate` = para executar as migrations
 * `php artisan serve` = para inciar o servidor
