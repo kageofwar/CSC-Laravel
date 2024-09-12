@@ -1,7 +1,7 @@
 ## Projeto Csc-books
 
 - Objetivo
-"Utilizando Laravel e suas Blades, juntamente com Bootstrap/Tailwind, construí um sistema que realiza buscas em uma API externa para obter informações sobre um determinado autor, além de permitir operações básicas como criar, visualizar, editar e excluir dados, integrando-se ao banco de dados MySQL."
+Utilizando Laravel e suas Blades, juntamente com Bootstrap/Tailwind, construí um sistema que realiza buscas em uma API externa para obter informações sobre um determinado autor, além de permitir operações básicas como criar, visualizar, editar e excluir dados, integrando-se ao banco de dados MySQL.
 
 **Pre-requisitos ⚙**
 * [PHP](https://www.php.net/)
