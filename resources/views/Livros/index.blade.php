@@ -10,64 +10,65 @@
     <title>Pagina Principal</title>
     @vite('resources/css/app.css')
 </head>
-<body>
-    <div class="flex justify-center items-center">
-        <h1 class="text-[5vh]">Livros Cadastrados no sistema 📚</h1>
+<body class="bg-black">
+    <div class="flex justify-center items-center translate-y-10">
+        <h1 class="text-[3.5vh] text-white">Livros Cadastrados no sistema 📚</h1>
     </div>
-    <div class="">
-        <a href="{{ route('livros.create') }}" class="btn btn-outline-success">Cadastrar Livro</a>
-    </div>
-    <div class="h-[90vh] w-full flex justify-center items-center">
-            <div class="w-[80%] h-[80%] overflow-auto">
+    <div class="h-[90vh] w-full flex justify-center items-center ">
+            <div class="w-[95%] h-[80%] overflow-auto border-2 border-black">
 
-                <div>
-                    @if(session()->has('success'))
-                    <div>
-                        {{ session('success') }}
+
+                <div class= h-full w-[100%] text-[1.5vh]">
+                    <div class="grid grid-cols-[5%_10%_10%_10%_8%_8%_25%_14%_10%] w-[100%] h-[5vh] bg-blue-300 [&>*]:border-black font-bold 
+                    [&>*]:flex [&>*]:justify-center [&>*]:items-center [&>*]:border-2 [&>*]:h-full [&>*]:w-full text-black">
+                        <div>ID</div>
+                        <div>Título</div>
+                        <div>Descrição</div>
+                        <div>Autor</div>
+                        <div>Preço</div>
+                        <div>Quantidade</div>
+                        <div>Biografia do Autor</div>
+                        <div>Naturalidade do Autor</div>
+                        <div>Ação</div>
                     </div>
-                    @endif
-                </div>
-
-                <table class="table-auto border-collapse border border-gray-300 w-full shadow-lg rounded-lg">
-                    <thead>
-                        <tr class="bg-gray-200 text-gray-700">
-                            <th class="border border-gray-300 text-center px-4 py-2 font-bold">ID</th>
-                            <th class="border border-gray-300 text-center px-4 py-2 font-bold">Título</th>
-                            <th class="border border-gray-300 text-center px-4 py-2 font-bold">Descrição</th>
-                            <th class="border border-gray-300 text-center px-4 py-2 font-bold">Autor</th>
-                            <th class="border border-gray-300 text-center px-4 py-2 font-bold">Preço</th>
-                            <th class="border border-gray-300 text-center px-4 py-2 font-bold">Quantidade</th>
-                            <th class="border border-gray-300 text-center px-4 py-2 font-bold">Biografia do Autor</th>
-                            <th class="border border-gray-300 text-center px-4 py-2 font-bold">Naturalidade do Autor</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white">
+                    <div class="grid grid-cols-[5%_10%_10%_10%_8%_8%_25%_14%_10%] w-[100%] bg-blue-500 [&>*]:border-black
+                        [&>*]:flex [&>*]:justify-center [&>*]:items-center [&>*]:border-2 [&>*]:h-full [&>*]:w-full text-white text-[1.5vh]">
                         @foreach($livros as $livro)
-                        <tr class="border border-gray-300 hover:bg-gray-50 transition duration-200 ease-in-out">
-                            <td class="border border-gray-300 text-center px-4 py-2">{{ $livro->id }}</td>
-                            <td class="border border-gray-300 text-center px-4 py-2">{{ $livro->titulo }}</td>
-                            <td class="border border-gray-300 text-center px-4 py-2">{{ $livro->descricao }}</td>
-                            <td class="border border-gray-300 text-center px-4 py-2">{{ $livro->autor }}</td>
-                            <td class="border border-gray-300 text-center px-4 py-2">{{ $livro->preco }}</td>
-                            <td class="border border-gray-300 text-center px-4 py-2">{{ $livro->quantidade }}</td>
-                            <td class="border border-gray-300 text-center px-4 py-2">{{ $livro->biografiaAutor }}</td>
-                            <td class="border border-gray-300 text-center px-4 py-2">{{ $livro->naturalidadeAutor }}</td>
+                        <div>{{ $livro->id }}</div>
+                        <div>{{ $livro->titulo }}</div>
+                        <div>{{ $livro->descricao }}</div>
+                        <div>{{ $livro->autor }}</div>
+                        <div>{{ $livro->preco }}</div>
+                        <div>{{ $livro->quantidade }}</div>
+                        <div><p class="h-32 overflow-auto p-2">{{ $livro->biografiaAutor }}</p></div>
+                        <div>{{ $livro->naturalidadeAutor }}</div>
+                        <div class="flex-col space-y-5 font-bold">
                             <td class="border border-gray-300 text-center px-4 py-2">
-                                <a href="{{ route('livros.edit', ['livro' => $livro]) }}" class="text-blue-500 hover:text-blue-700 font-semibold">Edit</a>
+                                <a href="{{ route('livros.edit', ['livro' => $livro]) }}" class="transition ease-in-out delay-150 border-2 rounded-3xl border-yellow-600 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-600 w-[70%] h-9 duration-300 flex items-center justify-center">Editar</a>
                             </td>
-                            <td class="border border-gray-300 text-center px-4 py-2">
-                                <form method="post" action="{{ route('livros.delete', ['livro' => $livro]) }}">
+                            <td class="border border-gray-300 text-center px-4 py-2 w-full">
+                                <form method="post" action="{{ route('livros.delete', ['livro' => $livro]) }}" class="w-[100%] flex justify-center items-center">
                                     @csrf
                                     @method('delete')
-                                    <input type="submit" value="Delete" class="text-red-500 hover:text-red-700 font-semibold cursor-pointer">
+                                    <input type="submit" value="Deletar" class="transition ease-in-out delay-150 border-2 rounded-3xl border-red-600 hover:-translate-y-1 hover:scale-110 hover:bg-red-600 w-[70%] h-9 duration-300">
                                 </form>
                             </td>
-                        </tr>
+                        </div>
                         @endforeach
-                    </tbody>
-                </table>
+                    </div>
+                </div>
             </div>
         </div>
+            <div class="flex-col -translate-y-10 justify-items-center">
+                <div class="">
+                    <div class="">
+                        @if(session()->has('success'))
+                        <p class="text-[2vh] text-green-700">{{ session('success') }}</p>
+                        @endif
+                    </div>
+                    <a href="{{ route('livros.create') }}" class="btn btn-outline-success h-9 flex items-center justify-center text-white">Cadastrar Livro</a>
+                </div>
+            </div>
     </body>
     </html>
     

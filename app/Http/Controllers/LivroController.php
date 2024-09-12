@@ -22,6 +22,13 @@ class LivroController extends Controller
         $livro->preco = $request->input('preco');
         $livro->quantidade = $request->input('quantidade');
 
+        // acabei não fazendo a validação para verificar se possui biografia ou não :/ mas se eu tivesse mais tempo com certeza eu terminaria!
+        // Sugestão de nomes 👇
+        // Shakespeare
+        // Gabriel García Márquez
+        // Camões 
+        // Woolf 
+        // Gordimer
         if ($livro->autor){
             $autorInfo = Http::get("https://openlibrary.org/search/authors.json", [
                 "q" => $livro->autor
@@ -43,7 +50,7 @@ class LivroController extends Controller
         //    'livro' => $livro
         //], 202);
 
-        return redirect(route('livros.index'));
+        return redirect(route('livros.index'))->with('success', 'Livro Cadastrado com sucesso!');
     }
 
     public function index() {

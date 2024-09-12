@@ -7,9 +7,11 @@
     <title>Document</title>
     @vite('resources/css/app.css')
 </head>
-<body>
+<body class="bg-black">
+    <a href="{{ route('livros.index') }}" class="w-[20vh] flex items-center justify-center rounded-2xl text-white h-10 m-5 bg-blue-500">Voltar</a>
+    <div class="mt-20">
     <div class="flex justify-center items-center">
-        <h1 class="text-[5vh]">Editar Livro</h1>
+        <h1 class="text-[5vh] text-white">Editar Livro 🖊</h1>
     </div>
     <div>
         @if($errors->any())
@@ -77,10 +79,11 @@
         <div>
             <input 
                 type="submit" 
-                value="Update" 
+                value="Atualizar Livro" 
                 class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg cursor-pointer transition duration-300 ease-in-out"
             />
         </div>
-    </form>        
+    </form>    
+</div>    
 </body>
 </html>

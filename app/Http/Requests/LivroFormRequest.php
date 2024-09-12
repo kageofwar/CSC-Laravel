@@ -31,8 +31,10 @@ class LivroFormRequest extends FormRequest
     public function messages()
     {
         return [
-            'required' => "O campo ':attribute' é obrigatório",
-            'numeric' => "O campo ':attribute' deve ser numerico",
+            'preco.required' => "Voce deve colocar algum valor para o livro!",
+            'preco.numeric' => "Valor do livro deve ser um numero!",
+            'titulo.required' => "Não deixe seu livro sem titulo!",
+            'quantidade.numeric' => "A quantidade deve ser um numero!"
         ];
     }
 }
