@@ -29,6 +29,7 @@ class LivroController extends Controller
         // Camões 
         // Woolf 
         // Gordimer
+        
         if ($livro->autor){
             $autorInfo = Http::get("https://openlibrary.org/search/authors.json", [
                 "q" => $livro->autor
@@ -73,32 +74,11 @@ class LivroController extends Controller
         ], 202);
     }
 
-    //public function edit(Livro $livro){
-    //    return view('livros.edit', ['livros' => $livro]);
-    //} 
-
-    //public function update(Request $request, $id){
-    //    $livro = Livro::findOrFail($id);
-//
-  //      $livro->titulo = $request->input('titulo');
-    //    $livro->descricao = $request->input('descricao');
-      //  $livro->autor = $request->input('autor');
-        //$livro->preco = $request->input('preco');
-        //$livro->quantidade = $request->input('quantidade');
-
-    //    $livro->update();
-//
-  //      return response()->json([
-    //        'mensagem' => 'Livro editado com sucesso!',
-      //      'livro' => $livro
-        //], 202);
-  //  } 
   public function edit(Livro $livro){
     return view('livros.edit', ['livro' => $livro]);
 }
 
 public function update(Livro $livro, Request $request) {
-    // Validação dos campos
     $request->validate([
         'titulo' => 'required|string',
         'descricao' => 'required|string',
@@ -107,14 +87,13 @@ public function update(Livro $livro, Request $request) {
         'quantidade' => 'required|integer',
     ]);
 
-    // Atualização dos dados
     $livro->titulo = $request->input('titulo');
     $livro->descricao = $request->input('descricao');
     $livro->autor = $request->input('autor');
     $livro->preco = $request->input('preco');
     $livro->quantidade = $request->input('quantidade');
 
-    $livro->save();  // Use save() em vez de update()
+    $livro->save(); 
 
     return redirect(route('livros.index'))->with('success', 'Livro atualizado com sucesso!');
 }
