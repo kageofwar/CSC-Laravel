@@ -22,7 +22,7 @@ class LivroController extends Controller
         $livro->preco = $request->input('preco');
         $livro->quantidade = $request->input('quantidade');
 
-        // acabei não fazendo a validação para verificar se possui biografia ou não :/ mas se eu tivesse mais tempo com certeza eu terminaria!
+        // acabei não terminando a parte da biografia :/ mas se eu tivesse mais tempo com certeza eu terminaria!
         // Sugestão de nomes 👇
         // Shakespeare
         // Gabriel García Márquez
@@ -38,7 +38,6 @@ class LivroController extends Controller
             $keyDoAutor = $autorInfo->docs[0]->key;
             
             $autorInfoKey = Http::get("https://openlibrary.org/authors/".$keyDoAutor.".json")->object();
-
 
             $livro->biografiaAutor = $autorInfoKey->bio;
             //Não achei a nacionalidade, por isso não coloquei :/
